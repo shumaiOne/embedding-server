@@ -47,6 +47,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl \
 COPY --from=builder /app/.venv /app/.venv
 COPY --from=builder /app/litert-lm /app/litert-lm
 
+# Configure 8192 context window and 140 vision tokens per frame
+COPY sitecustomize.py /app/.venv/lib/python3.14/site-packages/sitecustomize.py
+
 EXPOSE 9379
 
 HEALTHCHECK --interval=15s --timeout=5s --start-period=10s --retries=3 \
