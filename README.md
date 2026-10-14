@@ -13,7 +13,7 @@ The model is pre-downloaded and registered during the Docker build, enabling com
 - **Multimodal Inputs**: Supports text prompts and image base64 data URIs (`data:image/jpeg;base64,...`).
 - **Offline Capable**: Model package is pre-baked into the image; runs with `--network none`.
 - **Matryoshka Representation Learning (MRL)**: Supports custom dimension truncation (e.g. `dimensions: 256`, `512`, `768`).
-- **Lightweight & Fast**: Built with `uv` in a multi-stage Docker build, producing a minimal Python 3.11 Debian slim runtime.
+- **Lightweight & Fast**: Built with `uv` in a multi-stage Docker build, producing a minimal Python 3.14 Debian slim runtime.
 
 ---
 
