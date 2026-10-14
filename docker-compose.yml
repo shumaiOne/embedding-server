@@ -1,0 +1,20 @@
+services:
+  embedding-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MODEL_REPO: "litert-community/embeddinggemma-2-740m-litert-lm"
+        MODEL_FILE: "embeddinggemma-2-740m.litertlm"
+        MODEL_ID: "embeddinggemma-2-740m"
+    image: litert-lm-embeddinggemma2:740m
+    container_name: litert-embedding-server
+    ports:
+      - "9379:9379"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9379/v1/models"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
