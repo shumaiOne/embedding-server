@@ -19,37 +19,26 @@ The model is pre-downloaded and registered during the Docker build, enabling com
 
 ## Quickstart
 
-### 1. Build Image
+### Running with Docker
 
-```bash
-docker build -t litert-lm-embeddinggemma2:740m .
-```
-
-*(Optional build args: `MODEL_REPO`, `MODEL_FILE`, `MODEL_ID` to use other variants such as `embeddinggemma-2-text-vision-440m-litert-lm`).*
-
-### 2. Run Container
-
-Using Docker CLI:
 ```bash
 docker run -d \
   --name litert-embedding \
   -p 9379:9379 \
-  litert-lm-embeddinggemma2:740m
+  shumaione/embedding-server:latest
 ```
 
-Or using Docker Compose:
+---
+
+### Building from Source (Optional)
+
+You can also build the Docker image locally from source:
+
 ```bash
-docker compose up -d
+docker build -t shumaione/embedding-server:latest .
 ```
 
-To run in **completely offline / air-gapped mode**:
-```bash
-docker run -d \
-  --name litert-embedding-offline \
-  --network none \
-  -p 9379:9379 \
-  litert-lm-embeddinggemma2:740m
-```
+*(Optional build args: `MODEL_REPO`, `MODEL_FILE`, `MODEL_ID` to use other variants such as `embeddinggemma-2-text-vision-440m-litert-lm`).*
 
 ---
 
@@ -113,18 +102,6 @@ curl -X POST http://localhost:9379/v1/embeddings \
   }'
 ```
 
-### 4. Truncate Dimensions (Matryoshka MRL)
-
-```bash
-curl -X POST http://localhost:9379/v1/embeddings \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "embeddinggemma-2-740m",
-    "input": "task: search query | text: semantic search",
-    "dimensions": 256
-  }'
-```
-
 ---
 
 ## Automated Testing
@@ -140,4 +117,3 @@ python3 test_client.py
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-

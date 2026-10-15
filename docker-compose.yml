@@ -7,7 +7,7 @@ services:
         MODEL_REPO: "litert-community/embeddinggemma-2-740m-litert-lm"
         MODEL_FILE: "embeddinggemma-2-740m.litertlm"
         MODEL_ID: "embeddinggemma-2-740m"
-    image: litert-lm-embeddinggemma2:740m
+    image: shumaione/embedding-server:latest
     container_name: litert-embedding-server
     ports:
       - "9379:9379"
