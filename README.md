@@ -134,3 +134,10 @@ Run the included test suite against the running container:
 ```bash
 python3 test_client.py
 ```
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
