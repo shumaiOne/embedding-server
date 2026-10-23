@@ -28,6 +28,14 @@ docker run -d \
   shumaione/embedding-server:latest
 ```
 
+*Aliyun ACR Mirror:*
+```bash
+docker run -d \
+  --name litert-embedding \
+  -p 9379:9379 \
+  crpi-000nkafzu6xvpwsc.cn-hongkong.personal.cr.aliyuncs.com/shumai-one/embedding-server:latest
+```
+
 ---
 
 ### Building from Source (Optional)
